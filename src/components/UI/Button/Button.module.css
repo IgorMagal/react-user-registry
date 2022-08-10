@@ -1,0 +1,37 @@
+.button {
+  width: 95%;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ffffff;
+  background-color: #535252;
+  color: white;
+  border-radius: 12px;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:hover,
+.Buttonbutton:active {
+  background-color: #000000;
+  border-color: #050505;
+}
+
+.button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.button.alternative:hover,
+.button.alternative:active {
+  background-color: #220131;
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: auto;
+  }
+}
