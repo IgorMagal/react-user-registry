@@ -41,10 +41,11 @@ const AddUser = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (
-      userInput.firstName.trim.length === 0 ||
-      userInput.lastName.trim.length === 0 ||
-      userInput.birthdate.trim.length === 0
+      userInput.firstName.toString().trim().length === 0 ||
+      userInput.lastName.toString().trim().length === 0 ||
+      userInput.birthdate.toString().trim().length === 0
     ) {
+      console.log(userInput.firstName.toString().trim().length);
       setErrorMsg({
         title: "Invalid input",
         message: "Please enter a valid value in all fields.",
