@@ -4,14 +4,7 @@ import { Fragment, useState } from "react";
 import UserList from "./components/User/UserList/UserList";
 
 const App = (props) => {
-  const [registeredUsers, addUserRegistry] = useState([
-    {
-      firstName: "Igor",
-      lastName: "Magal",
-      birthdate: "15-Dic",
-      id: "Igor",
-    },
-  ]);
+  const [registeredUsers, addUserRegistry] = useState([]);
 
   const addUserHandler = (enteredUser) => {
     addUserRegistry((previousUsers) => {

@@ -1,58 +1,43 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import AlertModal from "../../UI/AlertModal/AlertModal";
 import Button from "../../UI/Button/Button";
 import styles from "./AddUser.module.css";
 
 const AddUser = (props) => {
-  const [userInput, setUserInput] = useState({
-    firstName: "",
-    lastName: "",
-    birthdate: "",
-  });
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const dateRef = useRef();
 
   const [error, setErrorMsg] = useState();
 
-  const clearForm = (props) => {
-    setUserInput(() => {
-      return {
-        firstName: "",
-        lastName: "",
-        birthdate: "",
-      };
-    });
-  };
-
-  const firstNameHandler = (event) => {
-    setUserInput((oldValues) => {
-      return { ...oldValues, firstName: event.target.value };
-    });
-  };
-  const lastNameHandler = (event) => {
-    setUserInput((oldValues) => {
-      return { ...oldValues, lastName: event.target.value };
-    });
-  };
-  const birthdateHandler = (event) => {
-    setUserInput((oldValues) => {
-      return { ...oldValues, birthdate: event.target.value };
-    });
+  const clearForm = () => {
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    dateRef.current.value = "";
   };
 
   const submitHandler = (event) => {
+    const enteredFirstName = firstNameRef.current.value;
+    const enteredLastName = lastNameRef.current.value;
+    const enteredDate = dateRef.current.value;
+
     event.preventDefault();
     if (
-      userInput.firstName.toString().trim().length === 0 ||
-      userInput.lastName.toString().trim().length === 0 ||
-      userInput.birthdate.toString().trim().length === 0
+      enteredFirstName.toString().trim().length === 0 ||
+      enteredLastName.toString().trim().length === 0 ||
+      enteredDate.toString().trim().length === 0
     ) {
-      console.log(userInput.firstName.toString().trim().length);
       setErrorMsg({
         title: "Invalid input",
         message: "Please enter a valid value in all fields.",
       });
       return;
     }
-    props.onNewUserAdded(userInput);
+    props.onNewUserAdded({
+      firstName: enteredFirstName,
+      lastName: enteredLastName,
+      birthdate: enteredDate,
+    });
     clearForm();
   };
 
@@ -74,27 +59,15 @@ const AddUser = (props) => {
           <div className={styles.addUserControls}>
             <div className={styles.addUserControl}>
               <label>First name</label>
-              <input
-                type="text"
-                value={userInput.firstName}
-                onChange={firstNameHandler}
-              ></input>
+              <input type="text" ref={firstNameRef}></input>
             </div>
             <div className={styles.addUserControl}>
               <label>Last name</label>
-              <input
-                type="text"
-                value={userInput.lastName}
-                onChange={lastNameHandler}
-              ></input>
+              <input type="text" ref={lastNameRef}></input>
             </div>
             <div className={styles.addUserControl}>
               <label>Date of birth</label>
-              <input
-                type="date"
-                value={userInput.birthdate}
-                onChange={birthdateHandler}
-              ></input>
+              <input type="date" ref={dateRef}></input>
             </div>
           </div>
           <div className={styles.addUserActions}>
