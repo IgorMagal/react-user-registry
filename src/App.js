@@ -8,7 +8,7 @@ const App = (props) => {
 
   const addUserHandler = (enteredUser) => {
     addUserRegistry((previousUsers) => {
-      return [...previousUsers, { ...enteredUser, id: enteredUser.firstName }];
+      return [...previousUsers, enteredUser];
     });
     console.log(registeredUsers);
   };

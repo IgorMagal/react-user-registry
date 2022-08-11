@@ -17,11 +17,11 @@ const AddUser = (props) => {
   };
 
   const submitHandler = (event) => {
+    event.preventDefault();
     const enteredFirstName = firstNameRef.current.value;
     const enteredLastName = lastNameRef.current.value;
     const enteredDate = dateRef.current.value;
 
-    event.preventDefault();
     if (
       enteredFirstName.toString().trim().length === 0 ||
       enteredLastName.toString().trim().length === 0 ||
