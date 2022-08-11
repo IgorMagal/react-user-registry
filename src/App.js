@@ -1,6 +1,6 @@
 import styles from "./App.module.css";
 import AddUser from "./components/User/AddUser/AddUser";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import UserList from "./components/User/UserList/UserList";
 
 const App = (props) => {
@@ -21,10 +21,10 @@ const App = (props) => {
   };
 
   return (
-    <div className={styles.body}>
+    <Fragment className={styles.body}>
       <AddUser onNewUserAdded={addUserHandler} />
       <UserList registeredUsers={registeredUsers} />
-    </div>
+    </Fragment>
   );
 };
 

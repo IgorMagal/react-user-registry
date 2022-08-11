@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import AlertModal from "../../UI/AlertModal/AlertModal";
 import Button from "../../UI/Button/Button";
 import styles from "./AddUser.module.css";
@@ -61,7 +61,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Fragment>
       {error && (
         <AlertModal
           title={error.title}
@@ -102,7 +102,7 @@ const AddUser = (props) => {
           </div>
         </form>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
